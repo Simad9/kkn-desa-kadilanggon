@@ -9,16 +9,19 @@
 
 <head>
 
-    <title>Aplikasi Manajemen Surat</title>
+    <title>E-Arsip Desa Kadilanggon</title>
 
     <!-- Meta START -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="upload/logodesa.png" />
+
+    <!-- == Favicon ganti == -->
     <?php
-      $query = mysqli_query($config, "SELECT logo from tbl_instansi");
-      list($logo) = mysqli_fetch_array($query);
-       echo '<link rel="shortcut icon" href="upload/'.$logo.'">';
+    //   $query = mysqli_query($config, "SELECT logo from tbl_instansi");
+    //   list($logo) = mysqli_fetch_array($query);
+    //    echo '<link rel="shortcut icon" href="upload/'.$logo.'">';
     ?>
     <!-- Meta END -->
 
@@ -54,11 +57,12 @@
         }
         .ams {
             font-size: 1.8rem;
+            color: #bdb7b7ff;
         }
         .grs {
             position: absolute;
             margin: 10px 0;
-            background-color: #fff;
+            background-color: #bdb7b7ff;
             height: 42px;
             width: 1px;
         }
