@@ -120,20 +120,28 @@ if (empty($_SESSION['admin'])) {
                     <!-- Row form END -->
 
                     <div class="row agenda">
-                    <div class="disp hidd">';
-            $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
-            list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
-            echo '<img class="logodisp" src="./upload/' . $logo . '"/>';
+                    <div class="disp hidd">
+                
+                    <img class="logodisp" src="./asset/img/logoKlaten.png"/>
+                    <h5 class="up" id="nama"> PEMERINTAHAN KABUPATEN KLATEN </h5>
+                    <h5 class="up" id="nama"> KECAMATAN WEDI </h5>
+                    <h5 class="up" id="nama"> DESA KADILANGGGON </h5>
+                    <span id="alamat">Alamat : Dk. Kadilanggon, Ds. Kadilanggon, Kec. Wedi, Kabupaten Klaten Kode Pos :57461</span>
+                ';
 
-            echo '<h6 class="up">' . $institusi . '</h6>';
+            // $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
+            // list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
+            // echo '<img class="logodisp" src="./upload/' . $logo . '"/>';
 
-            echo '<h5 class="nama" id="nama">' . $nama . '</h5><br/>';
+            // echo '<h6 class="up">' . $institusi . '</h6>';
 
-            echo '<h6 class="status">' . $status . '</h6>';
+            // echo '<h5 class="nama" id="nama">' . $nama . '</h5><br/>';
 
-            echo '<span id="alamat">' . $alamat . '</span>
+            // echo '<h6 class="status">' . $status . '</h6>';
 
-                    </div>
+            // echo '<span id="alamat">' . $alamat . '</span>
+
+            echo '  </div>
                     <div class="separator"></div>
                     <h5 class="hid">AGENDA SURAT MASUK</h5>
                         <div class="col s10">

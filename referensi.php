@@ -248,7 +248,6 @@ if (empty($_SESSION['admin'])) {
             $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi LIMIT $curr, $limit");
             if (mysqli_num_rows($query) > 0) {
                 while ($row = mysqli_fetch_array($query)) {
-                    var_dump($row);
                     echo '
                                           <tr><td>' . $row['kode'] . '</td>
                                                 <td>' . $row['nama'] . '</td>

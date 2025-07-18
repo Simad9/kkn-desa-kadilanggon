@@ -58,13 +58,13 @@
                 margin-bottom: -1rem;
             }
             #alamat {
-                font-size: 16px;
+                font-size: 14px;
             }
             .up {
                 text-transform: uppercase;
                 margin: 0;
                 line-height: 2.2rem;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             .status {
                 margin: 0;
@@ -166,14 +166,22 @@
 
         <!-- Container START -->
             <div id="colres">
-                <div class="disp">';
-                    $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
-                    list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
-                        echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
-                        echo '<h6 class="up">'.$institusi.'</h6>';
-                        echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
-                        echo '<h6 class="status">'.$status.'</h6>';
-                        echo '<span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>';
+                <div class="disp">
+                <div>
+                    <img class="logodisp" src="./asset/img/logoKlaten.png"/>
+                    <h5 class="up" id="nama"> PEMERINTAHAN KABUPATEN KLATEN </h5><br/>
+                    <h5 class="up" id="nama"> KECAMATAN WEDI </h5><br/>
+                    <h5 class="up" id="nama"> DESA KADILANGGGON </h5><br/>
+                </div>
+                <span id="alamat">Alamat : Dk. Kadilanggon, Ds. Kadilanggon, Kec. Wedi, Kabupaten Klaten Kode Pos :57461</span>
+                ';
+                    // $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
+                    // list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
+                    //     echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
+                    //     echo '<h6 class="up">'.$institusi.'</h6>';
+                    //     echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
+                    //     echo '<h6 class="status">'.$status.'</h6>';
+                    //     echo '<span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>';
 
                     echo '
                 </div>
@@ -252,20 +260,23 @@
                 </tbody>
             </table>
             <div id="lead">
-                <p>Kepala Sekolah</p>
-                <div style="height: 50px;"></div>';
-                $query = mysqli_query($config, "SELECT kepsek, nip FROM tbl_instansi");
-                list($kepsek,$nip) = mysqli_fetch_array($query);
-                if(!empty($kepsek)){
-                    echo '<p class="lead">'.$kepsek.'</p>';
-                } else {
-                    echo '<p class="lead">H. Riza Fachri, S.Kom.</p>';
-                }
-                if(!empty($nip)){
-                    echo '<p>NIP. '.$nip.'</p>';
-                } else {
-                    echo '<p>NIP. -</p>';
-                }
+                <p>Kepala Desa</p>
+                <div style="height: 50px;"></div>
+                <p class="lead">Sri Agung Suko W S.H.</p>
+                ';
+                
+                // $query = mysqli_query($config, "SELECT kepsek, nip FROM tbl_instansi");
+                // list($kepsek,$nip) = mysqli_fetch_array($query);
+                // if(!empty($kepsek)){
+                //     echo '<p class="lead">'.$kepsek.'</p>';
+                // } else {
+                //     echo '<p class="lead">Sri Agung Suko Wijoyo S.H.</p>';
+                // }
+                // if(!empty($nip)){
+                //     echo '<p>NIP. '.$nip.'</p>';
+                // } else {
+                //     echo '<p>NIP. -</p>';
+                // }
                 echo '
             </div>
         </div>
