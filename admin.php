@@ -42,34 +42,34 @@ if (empty($_SESSION['admin'])) {
                     $page = $_REQUEST['page'];
                     switch ($page) {
                         case 'tsm':
-                            include "transaksi_surat_masuk.php";
+                            include "./pages/admin/transaksi_surat_masuk.php";
                             break;
                         case 'ctk':
-                            include "cetak_disposisi.php";
+                            include "./pages/admin/cetak_disposisi.php";
                             break;
                         case 'tsk':
-                            include "transaksi_surat_keluar.php";
+                            include "./pages/admin/transaksi_surat_keluar.php";
                             break;
                         case 'asm':
-                            include "agenda_surat_masuk.php";
+                            include "./pages/admin/agenda_surat_masuk.php";
                             break;
                         case 'ask':
-                            include "agenda_surat_keluar.php";
+                            include "./pages/admin/agenda_surat_keluar.php";
                             break;
                         case 'ref':
-                            include "referensi.php";
+                            include "./pages/admin/referensi.php";
                             break;
                         case 'sett':
-                            include "pengaturan.php";
+                            include "./pages/admin/pengaturan.php";
                             break;
                         case 'pro':
-                            include "profil.php";
+                            include "./pages/admin/profil.php";
                             break;
                         case 'gsm':
-                            include "galeri_sm.php";
+                            include "./pages/admin/galeri_sm.php";
                             break;
                         case 'gsk':
-                            include "galeri_sk.php";
+                            include "./pages/admin/galeri_sk.php";
                             break;
                     }
                 } else {

@@ -10,13 +10,13 @@ if (empty($_SESSION['admin'])) {
         $sub = $_REQUEST['sub'];
         switch ($sub) {
             case 'add':
-                include "tambah_disposisi.php";
+                include "./pages/disposisi/tambah_disposisi.php";
                 break;
             case 'edit':
-                include "edit_disposisi.php";
+                include "./pages/disposisi/edit_disposisi.php";
                 break;
             case 'del':
-                include "hapus_disposisi.php";
+                include "./pages/disposisi/hapus_disposisi.php";
                 break;
         }
     } else {

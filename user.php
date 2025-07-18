@@ -10,13 +10,13 @@ if (empty($_SESSION['admin'])) {
         $act = $_REQUEST['act'];
         switch ($act) {
             case 'add':
-                include "tambah_user.php";
+                include "./pages/user/tambah_user.php";
                 break;
             case 'edit':
-                include "edit_tipe_user.php";
+                include "./pages/user/edit_tipe_user.php";
                 break;
             case 'del':
-                include "hapus_user.php";
+                include "./pages/user/hapus_user.php";
                 break;
         }
     } else {
