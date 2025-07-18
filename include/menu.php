@@ -5,8 +5,8 @@ if (!empty($_SESSION['admin'])) {
     <nav class="white">
         <div class="nav-wrapper">
 
-            <a href="./" class="brand-logo center hide-on-large-only"><i class="material-icons md-36">school</i> AMS</a>
-            <!-- <a href="./" class="ams brand-logo center hide-on-large-only">E-Arsip</a> -->
+            <!-- Gimana yak ini -->
+            <!-- <a href="./" class="center hide-on-large-only">E-Arsip</a> -->
 
             <ul id="slide-out" class="side-nav white" data-simplebar-direction="vertical">
                 <li class="no-padding">
