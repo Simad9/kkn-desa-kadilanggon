@@ -27,6 +27,7 @@ if (empty($_SESSION['admin'])) {
         $query = mysqli_query($config, "SELECT referensi FROM tbl_sett");
         list($referensi) = mysqli_fetch_array($query);
 
+
         //pagging
         $limit = $referensi;
         $pg = @$_GET['pg'];
@@ -244,9 +245,10 @@ if (empty($_SESSION['admin'])) {
                                     <tbody>';
 
             //script untuk menampilkan data
-            $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi DESC LIMIT $curr, $limit");
+            $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi LIMIT $curr, $limit");
             if (mysqli_num_rows($query) > 0) {
                 while ($row = mysqli_fetch_array($query)) {
+                    var_dump($row);
                     echo '
                                           <tr><td>' . $row['kode'] . '</td>
                                                 <td>' . $row['nama'] . '</td>
