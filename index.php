@@ -12,30 +12,19 @@
     require_once 'include/functions.php';
     $config = conn($host, $username, $password, $database);
 ?>
-<!--
-
-Name        : Aplikasi Sederhana Manajemen Surat Menyurat
-Version     : v1.0.0
-Description : Aplikasi untuk mencatat data surat masuk dan keluar secara digital.
-Date        : 2016
-Developer   : M. Rudianto
-Phone/WA    : 0852-3290-4156
-Email       : rudi@masrud.com
-Website     : https://masrud.com
-
--->
 <!doctype html>
 <html lang="en">
 
 <!-- Head START -->
 <head>
 
-    <title>Aplikasi Manajemen Surat</title>
+    <title>E-Arsip Desa Kadilanggon</title>
 
     <!-- Meta START -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="./asset/img/logodesa1.jpg" type="image/x-icon" />
     <?php
         $query = mysqli_query($config, "SELECT logo from tbl_instansi");
         list($logo) = mysqli_fetch_array($query);
@@ -82,6 +71,8 @@ Website     : https://masrud.com
         #logo {
             display: block;
             margin: -20px auto -5px;
+            width: 200px;
+            height: 200px;
         }
         img {
             border-radius: 50%;
@@ -186,6 +177,14 @@ Website     : https://masrud.com
 
                     <!-- Row Form START -->
                     <div class="row">
+                        <div class="col s12">
+                        <div class="card-content">
+                            <h5 class="center" id="title">E-Arsip Desa Kadilanggon</h5>
+                            <img src="./asset/img/logodesa1.jpg" id="logo"> <br>
+                            <!-- <h4 class="center" id="smk"> Desa Kadilanggon</h4> -->
+                            <div class="batas"></div>
+                        </div>
+                    </div>
 
                     <?php
                         $query = mysqli_query($config, "SELECT * FROM tbl_instansi");

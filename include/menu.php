@@ -14,7 +14,7 @@ if (!empty($_SESSION['admin'])) {
                     <div class="logo-side center white">
                         <img src="./asset/img/logodesa.png" class="" alt="Logo Desa Kadilanggon">
                         <h5 class="smk-side black-text">E-Arsip Desa Kadilanggon</h5>
-                        <p class="description-side black-text"> Jalan Bima, Dusun I, Kadilanggon, Kec. Wedi, Kabupaten Klaten, Jawa Tengah 57461</p>
+                        <p class="description-side black-text">Dk. Kadilanggon, Ds. Kadilanggon, Kec. Wedi, Kab. Klaten | Kode Pos : 57361</p>
 
                         <?php
                         // $query = mysqli_query($config, "SELECT * FROM tbl_instansi");

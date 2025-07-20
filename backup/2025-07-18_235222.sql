@@ -33,7 +33,6 @@ CREATE TABLE `tbl_instansi` (
   PRIMARY KEY (`id_instansi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO tbl_instansi VALUES("1","Dinas afa","SMK Makafndsknfasd jansf","Terakreditasi A","Sawahan, Nganjuk, Jawa Timur","M. Rudianto","-","https://masrud.com","rudi@masrud.com","logo.png","1");
 
 
 
@@ -2700,7 +2699,6 @@ CREATE TABLE `tbl_surat_keluar` (
   PRIMARY KEY (`id_surat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO tbl_surat_keluar VALUES("3","1","test","2","ini isinya","600.4.7.4","2025-07-18","2025-07-18","","asd","1");
 
 
 
@@ -2722,7 +2720,6 @@ CREATE TABLE `tbl_surat_masuk` (
   PRIMARY KEY (`id_surat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO tbl_surat_masuk VALUES("3","1","1","1","Surat tugas jalan","A30","1","2025-07-01","2025-07-14","8321-Lembar Pengesahan Laporan KP_Wijdan Akhmad Subarkat.jpg","Rapat","1");
 
 
 
