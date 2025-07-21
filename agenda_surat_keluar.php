@@ -88,7 +88,7 @@ if (empty($_SESSION['admin'])) {
                                     <div class="nav-wrapper green darken-1">
                                         <div class="col 12">
                                             <ul class="left">
-                                                <li class="waves-effect waves-light"><a href="?page=ask" class="judul"><i class="material-icons">print</i> Cetak Agenda Surat Keluar<a></li>
+                                                <li class="waves-effect waves-light"><a href="?page=ask" class="judul"><i class="material-icons">print</i> Rekapitulasi Surat Keluar<a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@ if (empty($_SESSION['admin'])) {
                                 <div class="nav-wrapper green darken-1">
                                     <div class="col 12">
                                         <ul class="left">
-                                            <li class="waves-effect waves-light"><a href="?page=ask" class="judul"><i class="material-icons">print</i> Cetak Agenda Surat Keluar<a></li>
+                                            <li class="waves-effect waves-light"><a href="?page=ask" class="judul"><i class="material-icons">print</i> Rekapitulasi Surat Keluar<a></li>
                                         </ul>
                                     </div>
                                 </div>

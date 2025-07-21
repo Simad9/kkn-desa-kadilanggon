@@ -59,7 +59,7 @@ if (!empty($_SESSION['admin'])) {
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
-                                <a class="collapsible-header black-text"><i class="material-icons black-text">repeat</i> Transaksi Surat</a>
+                                <a class="collapsible-header black-text"><i class="material-icons black-text">repeat</i> Buku Agenda</a>
                                 <div class="collapsible-body white">
                                     <ul>
                                         <li><a class="black-text" href="?page=tsm">Surat Masuk</a></li>
@@ -74,7 +74,7 @@ if (!empty($_SESSION['admin'])) {
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li>
-                            <a class="collapsible-header black-text"><i class="material-icons black-text">assignment</i> Buku Agenda</a>
+                            <a class="collapsible-header black-text"><i class="material-icons black-text">assignment</i> Rekapitulasi</a>
                             <div class="collapsible-body white">
                                 <ul>
                                     <li><a class="black-text" href="?page=asm">Surat Masuk</a></li>
@@ -88,7 +88,7 @@ if (!empty($_SESSION['admin'])) {
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li>
-                            <a class="collapsible-header black-text"><i class="material-icons black-text">image</i> Galeri File</a>
+                            <a class="collapsible-header black-text"><i class="material-icons black-text">image</i> Database Surat</a>
                             <div class="collapsible-body white">
                                 <ul>
                                     <li><a class="black-text" href="?page=gsm">Surat Masuk</a></li>
@@ -99,7 +99,7 @@ if (!empty($_SESSION['admin'])) {
                     </ul>
                 </li>
 
-                <li><a class="black-text" href="?page=ref"><i class="material-icons black-text">class</i> Referensi</a></li>
+                <li><a class="black-text" href="?page=ref"><i class="material-icons black-text">class</i> Database Kode</a></li>
 
                 <?php if ($_SESSION['admin'] == 1) { ?>
                     <li class="no-padding">
@@ -148,23 +148,23 @@ if (!empty($_SESSION['admin'])) {
 
                 <li><a class="black-text" href="./"><i class="material-icons black-text"></i> Beranda</a></li>
                 <?php if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 3) { ?>
-                    <li><a class="dropdown-button black-text" href="#!" data-activates="transaksi">Transaksi Surat <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button black-text" href="#!" data-activates="transaksi">Buku Agenda <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
                     <ul id="transaksi" class="dropdown-content white">
                         <li><a class="black-text" href="?page=tsm">Surat Masuk</a></li>
                         <li><a class="black-text" href="?page=tsk">Surat Keluar</a></li>
                     </ul>
                 <?php } ?>
-                <li><a class="dropdown-button black-text" href="#!" data-activates="agenda">Buku Agenda <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button black-text" href="#!" data-activates="agenda">Rekapitulasi <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
                 <ul id="agenda" class="dropdown-content white">
                     <li><a class="black-text" href="?page=asm">Surat Masuk</a></li>
                     <li><a class="black-text" href="?page=ask">Surat Keluar</a></li>
                 </ul>
-                <li><a class="dropdown-button black-text" href="#!" data-activates="galeri">Galeri File <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button black-text" href="#!" data-activates="galeri">Penyimpanan Surat <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
                 <ul id="galeri" class="dropdown-content white">
                     <li><a class="black-text" href="?page=gsm">Surat Masuk</a></li>
                     <li><a class="black-text" href="?page=gsk">Surat Keluar</a></li>
                 </ul>
-                <li><a class="black-text" href="?page=ref">Referensi</a></li>
+                <li><a class="black-text" href="?page=ref">Database Kode</a></li>
                 <?php if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2) { ?>
                     <li><a class="dropdown-button black-text" href="#!" data-activates="pengaturan">Pengaturan <i class="material-icons md-18 black-text">arrow_drop_down</i></a></li>
                     <ul id="pengaturan" class="dropdown-content white">
