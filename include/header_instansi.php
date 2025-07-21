@@ -1,3 +1,5 @@
+<!-- == GAK DIPAKAI FILE INI == -->
+
 <?php
 //cek session
 if (!empty($_SESSION['admin'])) {

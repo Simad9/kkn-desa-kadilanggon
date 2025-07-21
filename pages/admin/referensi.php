@@ -47,7 +47,7 @@ if (empty($_SESSION['admin'])) {
                                 <div class="nav-wrapper green darken-1">
                                     <div class="col m7">
                                         <ul class="left">
-                                            <li class="waves-effect waves-light hide-on-small-only"><a href="?page=ref" class="judul"><i class="material-icons">class</i> Klasifikasi Surat</a></li>';
+                                            <li class="waves-effect waves-light hide-on-small-only"><a href="?page=ref" class="judul"><i class="material-icons">class</i> Database Kode</a></li>';
         if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2) {
             echo '<li class="waves-effect waves-light"><a href="?page=ref&act=add"><i class="material-icons md-24">add_circle</i> Tambah Data</a></li>
                                                 <li class="waves-effect waves-light"><a href="?page=ref&act=imp"><i class="material-icons md-24">file_upload</i> Import Data</a></li>';
@@ -248,7 +248,6 @@ if (empty($_SESSION['admin'])) {
             $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi LIMIT $curr, $limit");
             if (mysqli_num_rows($query) > 0) {
                 while ($row = mysqli_fetch_array($query)) {
-                    var_dump($row);
                     echo '
                                           <tr><td>' . $row['kode'] . '</td>
                                                 <td>' . $row['nama'] . '</td>

@@ -89,11 +89,11 @@ if (empty($_SESSION['admin'])) {
                                     <p class="description">Anda login sebagai
                                         <?php
                                         if ($_SESSION['admin'] == 1) {
-                                            echo "<strong>Super Admin</strong>. Anda memiliki akses penuh terhadap sistem.";
+                                            echo "<strong>Admin</strong>. Anda memiliki akses penuh terhadap sistem.";
                                         } elseif ($_SESSION['admin'] == 2) {
-                                            echo "<strong>Administrator</strong>. Berikut adalah statistik data yang tersimpan dalam sistem.";
+                                            echo "<strong>Pengguna</strong>. Berikut adalah statistik data yang tersimpan dalam sistem.";
                                         } else {
-                                            echo "<strong>Petugas Disposisi</strong>. Berikut adalah statistik data yang tersimpan dalam sistem.";
+                                            echo "<strong>Staff</strong>. Berikut adalah statistik data yang tersimpan dalam sistem.";
                                         } ?></p>
                                 </div>
                             </div>

@@ -18,12 +18,13 @@
 <!-- Head START -->
 <head>
 
-    <title>Aplikasi Manajemen Surat</title>
+    <title>E-Arsip Desa Kadilanggon</title>
 
     <!-- Meta START -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="./asset/img/logodesa1.jpg" type="image/x-icon" />
     <?php
         $query = mysqli_query($config, "SELECT logo from tbl_instansi");
         list($logo) = mysqli_fetch_array($query);
@@ -70,6 +71,8 @@
         #logo {
             display: block;
             margin: -20px auto -5px;
+            width: 200px;
+            height: 200px;
         }
         img {
             border-radius: 50%;
@@ -174,6 +177,14 @@
 
                     <!-- Row Form START -->
                     <div class="row">
+                        <div class="col s12">
+                        <div class="card-content">
+                            <h5 class="center" id="title">E-Arsip Desa Kadilanggon</h5>
+                            <img src="./asset/img/logodesa1.jpg" id="logo"> <br>
+                            <!-- <h4 class="center" id="smk"> Desa Kadilanggon</h4> -->
+                            <div class="batas"></div>
+                        </div>
+                    </div>
 
                     <?php
                         $query = mysqli_query($config, "SELECT * FROM tbl_instansi");

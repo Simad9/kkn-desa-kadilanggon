@@ -35,7 +35,7 @@ if (empty($_SESSION['admin'])) {
                                     <div class="nav-wrapper green darken-1">
                                         <div class="col m12">
                                             <ul class="left">
-                                                <li class="waves-effect waves-light"><a href="?page=gsk" class="judul"><i class="material-icons">image</i> Galeri File Surat Keluar</a></li>
+                                                <li class="waves-effect waves-light"><a href="?page=gsk" class="judul"><i class="material-icons">image</i> Penyimpanan Surat Keluar</a></li>
                                             </ul>
                                         </div>
                                     </div>

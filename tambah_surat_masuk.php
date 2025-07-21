@@ -11,7 +11,7 @@ if (empty($_SESSION['admin'])) {
         //validasi form kosong
         if (
             $_REQUEST['no_agenda'] == "" || $_REQUEST['no_surat'] == "" || $_REQUEST['asal_surat'] == "" || $_REQUEST['isi'] == ""
-            || $_REQUEST['kode'] == "" || $_REQUEST['indeks'] == "" || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == ""
+            || $_REQUEST['kode'] == "" || $_REQUEST['tgl_surat'] == ""
         ) {
             $_SESSION['errEmpty'] = 'ERROR! Semua form wajib diisi';
             echo '<script language="javascript">window.history.back();</script>';
@@ -23,9 +23,9 @@ if (empty($_SESSION['admin'])) {
             $isi = $_REQUEST['isi'];
             $kode = substr($_REQUEST['kode'], 0, 30);
             $nkode = trim($kode);
-            $indeks = $_REQUEST['indeks'];
+            // $indeks = $_REQUEST['indeks'];
             $tgl_surat = $_REQUEST['tgl_surat'];
-            $keterangan = $_REQUEST['keterangan'];
+            // $keterangan = $_REQUEST['keterangan'];
             $id_user = $_SESSION['id_user'];
 
             //validasi input data
@@ -54,20 +54,20 @@ if (empty($_SESSION['admin'])) {
                                 echo '<script language="javascript">window.history.back();</script>';
                             } else {
 
-                                if (!preg_match("/^[a-zA-Z0-9., -]*$/", $indeks)) {
-                                    $_SESSION['indeks'] = 'Form Indeks hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
-                                    echo '<script language="javascript">window.history.back();</script>';
-                                } else {
+                                // if (!preg_match("/^[a-zA-Z0-9., -]*$/", $indeks)) {
+                                //     $_SESSION['indeks'] = 'Form Indeks hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
+                                //     echo '<script language="javascript">window.history.back();</script>';
+                                // } else {
 
                                     if (!preg_match("/^[0-9.-]*$/", $tgl_surat)) {
                                         $_SESSION['tgl_surat'] = 'Form Tanggal Surat hanya boleh mengandung angka dan minus(-)';
                                         echo '<script language="javascript">window.history.back();</script>';
                                     } else {
 
-                                        if (!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $keterangan)) {
-                                            $_SESSION['keterangan'] = 'Form Keterangan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
-                                            echo '<script language="javascript">window.history.back();</script>';
-                                        } else {
+                                        // if (!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $keterangan)) {
+                                        //     $_SESSION['keterangan'] = 'Form Keterangan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
+                                        //     echo '<script language="javascript">window.history.back();</script>';
+                                        // } else {
 
                                             $cek = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE no_surat='$no_surat'");
                                             $result = mysqli_num_rows($cek);
@@ -139,8 +139,6 @@ if (empty($_SESSION['admin'])) {
                                         }
                                     }
                                 }
-                            }
-                        }
                     }
                 }
             }
@@ -252,18 +250,18 @@ if (empty($_SESSION['admin'])) {
                         ?>
                         <label for="asal_surat">Asal Surat</label>
                     </div>
-                    <div class="input-field col s6">
+                    <!-- <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">storage</i>
-                        <input id="indeks" type="text" class="validate" name="indeks" required>
+                        <input id="indeks" type="text" class="validate" name="indeks" required> -->
                         <?php
-                        if (isset($_SESSION['indeks'])) {
-                            $indeks = $_SESSION['indeks'];
-                            echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $indeks . '</div>';
-                            unset($_SESSION['indeks']);
-                        }
+                        // if (isset($_SESSION['indeks'])) {
+                        //     $indeks = $_SESSION['indeks'];
+                        //     echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $indeks . '</div>';
+                        //     unset($_SESSION['indeks']);
+                        // }
                         ?>
-                        <label for="indeks">Indeks Berkas</label>
-                    </div>
+                        <!-- <label for="indeks">Indeks Berkas</label>
+                    </div> -->
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">looks_two</i>
                         <input id="no_surat" type="text" class="validate" name="no_surat" required>
@@ -305,18 +303,18 @@ if (empty($_SESSION['admin'])) {
                         ?>
                         <label for="isi">Isi Ringkas</label>
                     </div>
-                    <div class="input-field col s6">
+                    <!-- <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">featured_play_list</i>
-                        <input id="keterangan" type="text" class="validate" name="keterangan" required>
+                        <input id="keterangan" type="text" class="validate" name="keterangan" required> -->
                         <?php
-                        if (isset($_SESSION['keterangan'])) {
-                            $keterangan = $_SESSION['keterangan'];
-                            echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $keterangan . '</div>';
-                            unset($_SESSION['keterangan']);
-                        }
+                        // if (isset($_SESSION['keterangan'])) {
+                        //     $keterangan = $_SESSION['keterangan'];
+                        //     echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $keterangan . '</div>';
+                        //     unset($_SESSION['keterangan']);
+                        // }
                         ?>
-                        <label for="keterangan">Keterangan</label>
-                    </div>
+                        <!-- <label for="keterangan">Keterangan</label>
+                    </div> -->
                     <div class="input-field col s6">
                         <div class="file-field input-field">
                             <div class="btn light-green darken-1">
