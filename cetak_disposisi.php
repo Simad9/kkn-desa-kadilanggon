@@ -200,13 +200,11 @@
                             <tr>
                                 <td class="tgh" id="lbr" colspan="5">LEMBAR DISPOSISI</td>
                             </tr>
+                            
                             <tr>
-                                <td id="right" width="18%"><strong>Indeks Berkas</strong></td>
-                                <td id="left" style="border-right: none;" width="57%">: '.$row['indeks'].'</td>
+                                <td id="right" width="18%"><strong>Tanggal Surat</strong></td>
+                                <td id="left" style="border-right: none;" width="57%">: '.indoDate($row['tgl_surat']).'</td>
                                 <td id="left" width="25"><strong>Kode</strong> : '.$row['kode'].'</td>
-                            </tr>
-                            <tr><td id="right"><strong>Tanggal Surat</strong></td>
-                                <td id="left" colspan="2">: '.indoDate($row['tgl_surat']).'</td>
                             </tr>
                             <tr>
                                 <td id="right"><strong>Nomor Surat</strong></td>

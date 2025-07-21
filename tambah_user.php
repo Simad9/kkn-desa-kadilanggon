@@ -194,8 +194,8 @@ if (empty($_SESSION['admin'])) {
                         <i class="material-icons prefix md-prefix">supervisor_account</i><label>Pilih Tipe User</label><br />
                         <div class="input-field col s11 right">
                             <select class="browser-default validate" name="admin" id="admin" required>
-                                <option value="3">User Biasa</option>
-                                <option value="2">Administrator</option>
+                                <option value="3">Staff</option>
+                                <option value="2">Pengguna</option>
                             </select>
                         </div>
                         <?php
