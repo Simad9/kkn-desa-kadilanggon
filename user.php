@@ -121,11 +121,11 @@ if (empty($_SESSION['admin'])) {
                                     <td>' . $no++ . '</td>';
 
                 if ($row['admin'] == 1) {
-                    $row['admin'] = 'Super Admin';
+                    $row['admin'] = 'Admin';
                 } elseif ($row['admin'] == 2) {
-                    $row['admin'] = 'Administrator';
+                    $row['admin'] = 'Pengguna';
                 } else {
-                    $row['admin'] = 'User Biasa';
+                    $row['admin'] = 'Staff';
                 }
                 echo '<td>' . $row['username'] . '</td>
                                             <td>' . $row['nama'] . '<br/>' . $row['nip'] . '</td>

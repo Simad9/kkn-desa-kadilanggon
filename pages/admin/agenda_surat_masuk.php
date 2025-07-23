@@ -125,7 +125,7 @@ if (empty($_SESSION['admin'])) {
                     <img class="logodisp" src="./asset/img/logoKlaten.png"/>
                     <h5 class="up" id="nama"> PEMERINTAHAN KABUPATEN KLATEN </h5>
                     <h5 class="up" id="nama"> KECAMATAN WEDI </h5>
-                    <h5 class="up" id="nama"> DESA KADILANGGGON </h5>
+                    <h5 class="up" id="nama"> DESA KADILANGGON </h5>
                     <span id="alamat">Alamat : Dk. Kadilanggon, Ds. Kadilanggon, Kec. Wedi, Kabupaten Klaten Kode Pos :57461</span>
                 ';
 

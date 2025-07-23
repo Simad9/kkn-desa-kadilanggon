@@ -11,7 +11,7 @@ if (empty($_SESSION['admin'])) {
         //validasi form kosong
         if (
             $_REQUEST['no_agenda'] == "" || $_REQUEST['no_surat'] == "" || $_REQUEST['asal_surat'] == "" || $_REQUEST['isi'] == ""
-            || $_REQUEST['kode'] == "" || $_REQUEST['indeks'] == "" || $_REQUEST['tgl_surat'] == ""  || $_REQUEST['keterangan'] == ""
+            || $_REQUEST['kode'] == "" ||  $_REQUEST['tgl_surat'] == ""
         ) {
             $_SESSION['errEmpty'] = 'ERROR! Semua form wajib diisi';
             echo '<script language="javascript">window.history.back();</script>';
@@ -23,9 +23,9 @@ if (empty($_SESSION['admin'])) {
             $isi = $_REQUEST['isi'];
             $kode = substr($_REQUEST['kode'], 0, 30);
             $nkode = trim($kode);
-            $indeks = $_REQUEST['indeks'];
+            // $indeks = $_REQUEST['indeks'];
             $tgl_surat = $_REQUEST['tgl_surat'];
-            $keterangan = $_REQUEST['keterangan'];
+            // $keterangan = $_REQUEST['keterangan'];
             $id_user = $_SESSION['id_user'];
 
             //validasi input data
@@ -54,102 +54,100 @@ if (empty($_SESSION['admin'])) {
                                 echo '<script language="javascript">window.history.back();</script>';
                             } else {
 
-                                if (!preg_match("/^[a-zA-Z0-9., -]*$/", $indeks)) {
-                                    $_SESSION['eindeks'] = 'Form Indeks hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
+                                // if (!preg_match("/^[a-zA-Z0-9., -]*$/", $indeks)) {
+                                //     $_SESSION['eindeks'] = 'Form Indeks hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
+                                //     echo '<script language="javascript">window.history.back();</script>';
+                                // } else {
+
+                                if (!preg_match("/^[0-9.-]*$/", $tgl_surat)) {
+                                    $_SESSION['etgl_surat'] = 'Form Tanggal Surat hanya boleh mengandung angka dan minus(-)';
                                     echo '<script language="javascript">window.history.back();</script>';
                                 } else {
 
-                                    if (!preg_match("/^[0-9.-]*$/", $tgl_surat)) {
-                                        $_SESSION['etgl_surat'] = 'Form Tanggal Surat hanya boleh mengandung angka dan minus(-)';
-                                        echo '<script language="javascript">window.history.back();</script>';
-                                    } else {
+                                    // if (!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $keterangan)) {
+                                    //     $_SESSION['eketerangan'] = 'Form Keterangan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
+                                    //     echo '<script language="javascript">window.history.back();</script>';
+                                    // } else {
 
-                                        if (!preg_match("/^[a-zA-Z0-9.,()\/ -]*$/", $keterangan)) {
-                                            $_SESSION['eketerangan'] = 'Form Keterangan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan kurung()';
-                                            echo '<script language="javascript">window.history.back();</script>';
-                                        } else {
+                                    $ekstensi = array('jpg', 'png', 'jpeg', 'doc', 'docx', 'pdf');
+                                    $file = $_FILES['file']['name'];
+                                    $x = explode('.', $file);
+                                    $eks = strtolower(end($x));
+                                    $ukuran = $_FILES['file']['size'];
+                                    $target_dir = "upload/surat_masuk/";
 
-                                            $ekstensi = array('jpg', 'png', 'jpeg', 'doc', 'docx', 'pdf');
-                                            $file = $_FILES['file']['name'];
-                                            $x = explode('.', $file);
-                                            $eks = strtolower(end($x));
-                                            $ukuran = $_FILES['file']['size'];
-                                            $target_dir = "upload/surat_masuk/";
+                                    if (! is_dir($target_dir)) {
+                                        mkdir($target_dir, 0755, true);
+                                    }
 
-                                            if (! is_dir($target_dir)) {
-                                                mkdir($target_dir, 0755, true);
-                                            }
+                                    //jika form file tidak kosong akan mengeksekusi script dibawah ini
+                                    if ($file != "") {
 
-                                            //jika form file tidak kosong akan mengeksekusi script dibawah ini
-                                            if ($file != "") {
+                                        $rand = rand(1, 10000);
+                                        $nfile = $rand . "-" . $file;
 
-                                                $rand = rand(1, 10000);
-                                                $nfile = $rand . "-" . $file;
+                                        //validasi file
+                                        if (in_array($eks, $ekstensi) == true) {
+                                            if ($ukuran < 2300000) {
 
-                                                //validasi file
-                                                if (in_array($eks, $ekstensi) == true) {
-                                                    if ($ukuran < 2300000) {
+                                                $id_surat = $_REQUEST['id_surat'];
+                                                $query = mysqli_query($config, "SELECT file FROM tbl_surat_masuk WHERE id_surat='$id_surat'");
+                                                list($file) = mysqli_fetch_array($query);
 
-                                                        $id_surat = $_REQUEST['id_surat'];
-                                                        $query = mysqli_query($config, "SELECT file FROM tbl_surat_masuk WHERE id_surat='$id_surat'");
-                                                        list($file) = mysqli_fetch_array($query);
+                                                //jika file tidak kosong akan mengeksekusi script dibawah ini
+                                                if (!empty($file)) {
+                                                    unlink($target_dir . $file);
 
-                                                        //jika file tidak kosong akan mengeksekusi script dibawah ini
-                                                        if (!empty($file)) {
-                                                            unlink($target_dir . $file);
+                                                    move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
 
-                                                            move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
+                                                    $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',tgl_surat='$tgl_surat',file='$nfile',id_user='$id_user' WHERE id_surat='$id_surat'");
 
-                                                            $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',indeks='$indeks',tgl_surat='$tgl_surat',file='$nfile',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
-
-                                                            if ($query == true) {
-                                                                $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
-                                                                header("Location: ./admin.php?page=tsm");
-                                                                die();
-                                                            } else {
-                                                                $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
-                                                                echo '<script language="javascript">window.history.back();</script>';
-                                                            }
-                                                        } else {
-
-                                                            //jika file kosong akan mengeksekusi script dibawah ini
-                                                            move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
-
-                                                            $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',indeks='$indeks',tgl_surat='$tgl_surat',file='$nfile',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
-
-                                                            if ($query == true) {
-                                                                $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
-                                                                header("Location: ./admin.php?page=tsm");
-                                                                die();
-                                                            } else {
-                                                                $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
-                                                                echo '<script language="javascript">window.history.back();</script>';
-                                                            }
-                                                        }
+                                                    if ($query == true) {
+                                                        $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
+                                                        header("Location: ./admin.php?page=tsm");
+                                                        die();
                                                     } else {
-                                                        $_SESSION['errSize'] = 'Ukuran file yang diupload terlalu besar!';
+                                                        $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
                                                         echo '<script language="javascript">window.history.back();</script>';
                                                     }
                                                 } else {
-                                                    $_SESSION['errFormat'] = 'Format file yang diperbolehkan hanya *.JPG, *.PNG, *.DOC, *.DOCX atau *.PDF!';
-                                                    echo '<script language="javascript">window.history.back();</script>';
+
+                                                    //jika file kosong akan mengeksekusi script dibawah ini
+                                                    move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
+
+                                                    $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',indeks='$indeks',tgl_surat='$tgl_surat',file='$nfile',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
+
+                                                    if ($query == true) {
+                                                        $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
+                                                        header("Location: ./admin.php?page=tsm");
+                                                        die();
+                                                    } else {
+                                                        $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
+                                                        echo '<script language="javascript">window.history.back();</script>';
+                                                    }
                                                 }
                                             } else {
-
-                                                //jika form file kosong akan mengeksekusi script dibawah ini
-                                                $id_surat = $_REQUEST['id_surat'];
-
-                                                $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',indeks='$indeks',tgl_surat='$tgl_surat',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
-
-                                                if ($query == true) {
-                                                    $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
-                                                    header("Location: ./admin.php?page=tsm");
-                                                    die();
-                                                } else {
-                                                    $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
-                                                    echo '<script language="javascript">window.history.back();</script>';
-                                                }
+                                                $_SESSION['errSize'] = 'Ukuran file yang diupload terlalu besar!';
+                                                echo '<script language="javascript">window.history.back();</script>';
                                             }
+                                        } else {
+                                            $_SESSION['errFormat'] = 'Format file yang diperbolehkan hanya *.JPG, *.PNG, *.DOC, *.DOCX atau *.PDF!';
+                                            echo '<script language="javascript">window.history.back();</script>';
+                                        }
+                                    } else {
+
+                                        //jika form file kosong akan mengeksekusi script dibawah ini
+                                        $id_surat = $_REQUEST['id_surat'];
+
+                                        $query = mysqli_query($config, "UPDATE tbl_surat_masuk SET no_agenda='$no_agenda',no_surat='$no_surat',asal_surat='$asal_surat',isi='$isi',kode='$nkode',indeks='$indeks',tgl_surat='$tgl_surat',keterangan='$keterangan',id_user='$id_user' WHERE id_surat='$id_surat'");
+
+                                        if ($query == true) {
+                                            $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate';
+                                            header("Location: ./admin.php?page=tsm");
+                                            die();
+                                        } else {
+                                            $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
+                                            echo '<script language="javascript">window.history.back();</script>';
                                         }
                                     }
                                 }
@@ -262,18 +260,18 @@ if (empty($_SESSION['admin'])) {
                             ?>
                             <label for="asal_surat">Asal Surat</label>
                         </div>
-                        <div class="input-field col s6">
+                        <!-- <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">storage</i>
-                            <input id="indeks" type="text" class="validate" name="indeks" value="<?php echo $indeks; ?>" required>
+                            <input id="indeks" type="text" class="validate" name="indeks" value="<?php echo $indeks; ?>" required> -->
                             <?php
-                            if (isset($_SESSION['eindeks'])) {
-                                $eindeks = $_SESSION['eindeks'];
-                                echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $eindeks . '</div>';
-                                unset($_SESSION['eindeks']);
-                            }
+                            // if (isset($_SESSION['eindeks'])) {
+                            //     $eindeks = $_SESSION['eindeks'];
+                            //     echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $eindeks . '</div>';
+                            //     unset($_SESSION['eindeks']);
+                            // }
                             ?>
-                            <label for="indeks">Indeks Berkas</label>
-                        </div>
+                            <!-- <label for="indeks">Indeks Berkas</label> 
+                        </div>  -->
                         <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">looks_two</i>
                             <input id="no_surat" type="text" class="validate" name="no_surat" value="<?php echo $no_surat; ?>" required>
@@ -310,18 +308,18 @@ if (empty($_SESSION['admin'])) {
                             ?>
                             <label for="isi">Isi Ringkas</label>
                         </div>
-                        <div class="input-field col s6">
+                        <!-- <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">featured_play_list</i>
-                            <input id="keterangan" type="text" class="validate" name="keterangan" value="<?php echo $keterangan; ?>" required>
+                            <input id="keterangan" type="text" class="validate" name="keterangan" value="<?php echo $keterangan; ?>" required> -->
                             <?php
-                            if (isset($_SESSION['eketerangan'])) {
-                                $eketerangan = $_SESSION['eketerangan'];
-                                echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $eketerangan . '</div>';
-                                unset($_SESSION['eketerangan']);
-                            }
+                            // if (isset($_SESSION['eketerangan'])) {
+                            //     $eketerangan = $_SESSION['eketerangan'];
+                            //     echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">' . $eketerangan . '</div>';
+                            //     unset($_SESSION['eketerangan']);
+                            // }
                             ?>
-                            <label for="keterangan">Keterangan</label>
-                        </div>
+                            <!-- <label for="keterangan">Keterangan</label>
+                        </div> -->
                         <div class="input-field col s6">
                             <div class="file-field input-field">
                                 <div class="btn light-green darken-1">
