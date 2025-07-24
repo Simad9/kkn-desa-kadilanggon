@@ -120,11 +120,11 @@ if (empty($_SESSION['admin'])) {
                                                     if ($row['admin'] == 2) {
                                                         echo 'Administrator';
                                                     } else {
-                                                        echo 'User Biasa';
+                                                        echo 'Staff';
                                                     }
                                                     ?>
                                                 </option>
-                                                <option value="3">User Biasa</option>
+                                                <option value="3">Staff</option>
                                                 <option value="2">Administrator</option>
                                             </select>
                                         </div>
